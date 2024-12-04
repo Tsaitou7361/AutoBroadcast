@@ -1,0 +1,17 @@
+name: AutoBroadcast
+main: org.tsaitou.autobroadcast.AutoBroadcast
+version: '1.0'
+api-version: '1.21'
+author: AverageKevin, Tsaitou7361
+description: Broadcast specified messages automatic into your server.
+commands:
+  AutoBroadcast:
+    description: AutoBroadcast Help desk.
+    usage: /<command>
+    aliases: [abc]
+    permission: abc.admin
+    permission-message: No Permission
+permissions:
+  abc.admin:
+    description: Allows you to use admin command
+    default: op
