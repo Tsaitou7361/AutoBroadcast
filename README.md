@@ -6,4 +6,23 @@
 | 已測試版本  | 1.21.3 |
 | 不支援版本  | X      |
 
+```yaml
+# config.yml (Template)
+
+message:
+  # Define what you want to broadcast here
+  messages:
+    - "&bMessage 1"
+    - "&dMessage 2"
+    - "&5Message 3"
+    - "&9Message 4"
+
+  # No Permission Message
+  denied: "&4You have no permission to execute this command."
+# Interval between Broadcasts In Seconds
+interval: 120
+# Play a sound when Broadcasting
+sound: true
+```
+
 Tsaitou.org &copy; 2024
