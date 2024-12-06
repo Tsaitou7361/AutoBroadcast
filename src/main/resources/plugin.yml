@@ -1,6 +1,6 @@
 name: AutoBroadcast
 main: org.tsaitou.autobroadcast.AutoBroadcast
-version: '1.0'
+version: '1.1'
 api-version: '1.21'
 author: AverageKevin, Tsaitou7361
 description: Broadcast specified messages automatic into your server.

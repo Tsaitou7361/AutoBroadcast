@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 
 import java.util.*;
 
+@SuppressWarnings("unused")
 public class Commands implements CommandExecutor, TabCompleter {
     private static final AutoBroadcast plugin = AutoBroadcast.instance;
     @Override
@@ -75,7 +76,7 @@ public class Commands implements CommandExecutor, TabCompleter {
                 "\n" +
                 ChatColor.DARK_GRAY + ChatColor.STRIKETHROUGH + "-----------------------------------------");
     }
-        @Override()
+    @Override()
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         List<String> commands = Arrays.asList("reload", "help");
         if (args.length == 0) {

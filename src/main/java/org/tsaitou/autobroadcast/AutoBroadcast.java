@@ -8,6 +8,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +22,7 @@ public class AutoBroadcast extends JavaPlugin {
     public static AutoBroadcast instance;
     private File customConfigFile;
     private FileConfiguration customConfig;
+    private BukkitTask task;
 
     @Override
     public void onEnable() {
@@ -65,6 +67,11 @@ public class AutoBroadcast extends JavaPlugin {
         } catch (IOException | InvalidConfigurationException e) {
             getLogger().warning(e.toString());
         }
+
+        if (reload) {
+            task.cancel();
+            ABC();
+        }
     }
 
     @Override
@@ -73,23 +80,23 @@ public class AutoBroadcast extends JavaPlugin {
     }
 
     public boolean isNull() {
-        @SuppressWarnings("rawtypes")
-        List messages = getCustomConfig().getStringList("message.messages");
-        return messages.isEmpty();
+        return getCustomConfig().getStringList("message.messages").isEmpty();
     }
 
     public void ABC() {
+        @SuppressWarnings("rawtype")
+        List<String> messages = getCustomConfig().getStringList("message.messages");
+        int interval = getCustomConfig().getInt("interval");
+        boolean PlaySound = getCustomConfig().getBoolean("sound");
 
-        Bukkit.getScheduler().runTaskTimer(this, () -> {
-            @SuppressWarnings("rawtypes")
-            List messages = instance.getCustomConfig().getStringList("message.messages");
+        task = Bukkit.getScheduler().runTaskTimer(this, () -> {
             Random random = new Random();
             if (!(isNull())) {
                 Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes(
                         '&',
-                        (String) messages.get(random.nextInt(messages.size()))
+                        messages.get(random.nextInt(messages.size()))
                 ));
-                if (instance.getCustomConfig().getBoolean("sound")) {
+                if (PlaySound) {
                     for (Player p: Bukkit.getOnlinePlayers()) {
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 10.0F, 1.0F);
                     }
@@ -97,6 +104,6 @@ public class AutoBroadcast extends JavaPlugin {
             } else {
                 getLogger().warning("Nothing to broadcast. Please check the config file.");
             }
-        }, 0L, instance.getCustomConfig().getInt("interval") * 20L);
+        }, 0L, interval * 20L);
     }
 }
