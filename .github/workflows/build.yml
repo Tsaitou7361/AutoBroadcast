@@ -22,7 +22,7 @@ jobs:
         run: ./gradlew build
 
       - name: Automatic release
-        uses: Trinovantes/action-automatic-releases@master
+        uses: Trinovantes/action-automatic-release@master
         id: auto_release
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
