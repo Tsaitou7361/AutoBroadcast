@@ -23,9 +23,13 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 8.8
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: |
+          gradle --version
+          gradle build
 
       - name: Automatic release
         uses: Trinovantes/action-automatic-release@master
@@ -35,8 +39,8 @@ jobs:
         with:
           is_prerelease: false
           auto_release_title: v1.1
-          auto_release_tag: V1.1
-      - name: Upload asset to nightly build release
+          auto_release_tag: v1.1
+      - name: Upload and build release
         uses: Trinovantes/action-release-upload@master
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
