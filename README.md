@@ -1,10 +1,9 @@
 # AutoBroadcast
 這個專案延續了 [AverageKevin/AutoBroadcast](https://github.com/ToggleIP/AutoBroadCast/blob/master/src/nl/AverageKevin/ABC/main.java) ，使其適用於 1.21.3
 
-| <None> | <None> |
-|--------|--------|
-| 已測試版本  | 1.21.3 |
-| 不支援版本  | X      |
+| 已測試版本  | 未測試版本   | 不支援版本 |
+|--------|---------|-------|
+| 1.21.3 | 1.21.4  | 無     |
 
 ```yaml
 # config.yml (Template)
