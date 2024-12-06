@@ -22,12 +22,20 @@ jobs:
         run: ./gradlew build
 
       - name: Automatic release
-        uses: Trinovantes/action-automatic-releases@latest
+        uses: Trinovantes/action-automatic-releases@master
+        id: auto_release
         env:
-          GITHUB_TOKEN: "${{ secrets.TOKEN }}"
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           is_prerelease: false
-          files: |
-            *.jar
           auto_release_title: v1.1
           auto_release_tag: V1.1
+      - name: Upload asset to nightly build release
+        uses: Trinovantes/action-release-upload@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          release_id: ${{ steps.auto_release.outputs.release_id }}
+          upload_url: ${{ steps.auto_release.outputs.upload_url }}
+          files: |-
+            *.jar
