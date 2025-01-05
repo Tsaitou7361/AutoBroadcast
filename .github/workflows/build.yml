@@ -32,11 +32,11 @@ jobs:
 
       - name: Build with Gradle
         run: |
-          chmod +x gradlew
-          ./gradlew build --stacktrace
+          pwd
+          ./gradlew build
 
       - name: Archive plugin jars on GitHub
         uses: actions/upload-artifact@v4
         with:
-          name: AutoBroadcast plugin jars
+          name: AutoBroadcast plugin jar
           path: jars/
