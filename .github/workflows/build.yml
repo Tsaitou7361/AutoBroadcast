@@ -32,7 +32,7 @@ jobs:
 
       - name: Build with Gradle
         run: |
-          pwd
+          chmod +x gradlew
           ./gradlew build
 
       - name: Archive plugin jars on GitHub
