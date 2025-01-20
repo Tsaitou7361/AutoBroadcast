@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    name: Build ane upload
+    name: Build and upload
     runs-on: ubuntu-latest
 
     steps:
@@ -39,4 +39,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: AutoBroadcast plugin jar
-          path: jars/
+          path: build/libs

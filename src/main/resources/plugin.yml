@@ -1,9 +1,11 @@
 name: AutoBroadcast
-main: org.tsaitou.autobroadcast.AutoBroadcast
-version: '1.1'
+main: org.tsaitou.AutoBroadcast.AutoBroadcast
+version: '1.2'
 api-version: '1.21'
-author: AverageKevin, Tsaitou7361
+authors:
+  - "Tsaitou7361"
 description: Broadcast specified messages automatic into your server.
+load: POSTWORLD
 commands:
   AutoBroadcast:
     description: AutoBroadcast Help desk.
