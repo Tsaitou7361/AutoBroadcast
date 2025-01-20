@@ -9,4 +9,4 @@ messages:
 interval: 120
 
 # Play a sound when Broadcasting
-sound: true
+sound: false
