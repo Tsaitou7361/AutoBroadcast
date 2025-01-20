@@ -35,9 +35,9 @@ jobs:
           chmod +x gradlew
           ./gradlew build
 
-      - name: Archive plugin jars on GitHub
+      - name: Upload JAR Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: AutoBroadcast plugin jar
+          name: jars
           path: build/libs/*.jar
           if-no-files-found: 'warn'
